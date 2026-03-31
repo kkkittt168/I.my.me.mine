@@ -23,20 +23,19 @@
            left: 0;
            width: 100vw;
            height: 100vh;
-           z-index: 9999;
+           z-index: -1; /* เปลี่ยนเป็น -1 เพื่อให้ฝนไปอยู่หลังปุ่ม */
            pointer-events: none;
-           display: block;
-        }
-
+       }
 
         .container {
-            width: 100%;
-            height: 100dvh; /* ใช้ dynamic vh สำหรับ Safari บน iPhone */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center; /* จัดให้อยู่กลางจอพอดี */
-            padding: 10px;
+           width: 100%;
+           min-height: 100dvh; /* แก้จุดที่ 1 */
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           justify-content: center;
+           padding: 10px;
+           background: transparent !important; /* แก้จุดที่ 2 */
         }
 
         /* กรอบนีออน สเกลตามความกว้างหน้าจอ */
