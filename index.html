@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>·-My.Fun's Portal-·</title>
+    <title>Jomtub's Portal</title>
     <style>
         * { box-sizing: border-box; }
         body, html {
@@ -13,33 +13,30 @@
             height: 100%;
             background-color: #000;
             font-family: sans-serif;
-            overflow: auto; /* กันสไลด์ไปมาบน iPhone */
+            overflow: hidden; /* กันสไลด์ไปมาบน iPhone */
         }
 
         /* Canvas ฝนดาวตก Jomtub */
         #canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1; /* **แก้จาก -1 เป็น 1 (เพื่อให้มันมาอยู่ข้างหน้าสุด)** */
-    pointer-events: none; /* **สำคัญมาก: เพื่อให้ป๊ะป๋าจิ้มทะลุตัวอักษรไปกดปุ่มได้** */
-}
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
 
-          .container {
-    width: 100%;
-    min-height: 100vh; /* **เติม min- เข้าไปข้างหน้าคำว่า height** */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    position: relative; /* **เพิ่มบรรทัดนี้เข้าไปครับ** */
-    z-index: 2; /* **เพิ่มบรรทัดนี้เพื่อให้ปุ่มกดอยู่เหนือตัวอักษรวิ่ง** */
-}
+        .container {
+            width: 100%;
+            height: 100dvh; /* ใช้ dynamic vh สำหรับ Safari บน iPhone */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* จัดให้อยู่กลางจอพอดี */
+            padding: 10px;
+        }
 
-      /* กรอบนีออน สเกลตามความกว้างหน้าจอ */
+        /* กรอบนีออน สเกลตามความกว้างหน้าจอ */
         .neon-header {
             border: 4px solid #ff007f;
             padding: 5% 2%;
@@ -197,6 +194,6 @@
         }
 
         setInterval(draw, 50);
-   <script>
-        canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+    </script>
+</body>
+</html>
