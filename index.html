@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Jomtub's Portal</title>
+    <style>
+        * { box-sizing: border-box; }
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            font-family: sans-serif;
+            overflow: hidden; /* กันสไลด์ไปมาบน iPhone */
+        }
+
+        /* Canvas ฝนดาวตก Jomtub */
+        #canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .container {
+            width: 100%;
+            height: 100dvh; /* ใช้ dynamic vh สำหรับ Safari บน iPhone */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* จัดให้อยู่กลางจอพอดี */
+            padding: 10px;
+        }
+
+        /* กรอบนีออน สเกลตามความกว้างหน้าจอ */
+        .neon-header {
+            border: 4px solid #ff007f;
+            padding: 5% 2%;
+            border-radius: 20px;
+            text-align: center;
+            background: rgba(255, 0, 127, 0.2);
+            box-shadow: 0 0 20px #ff007f, inset 0 0 10px #ff007f;
+            width: 85%;
+            max-width: 450px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .neon-header h1 {
+            color: #ff007f;
+            text-shadow: 0 0 10px #ff007f;
+            margin: 0;
+            font-size: clamp(16px, 4vw, 22px); /* ปรับขนาดฟอนต์อัตโนมัติ */
+            line-height: 1.2;
+        }
+
+        /* Pokémon ที่มุม - ปรับขนาดตามจอ */
+        .poki-deco {
+            position: absolute;
+            width: clamp(40px, 12vw, 70px);
+            height: auto;
+            filter: drop-shadow(0 0 5px #ff007f);
+        }
+        .tl { top: -20%; left: -10%; }
+        .tr { top: -20%; right: -10%; }
+        .bl { bottom: -20%; left: -10%; }
+        .br { bottom: -20%; right: -10%; }
+
+        /* ตารางปุ่ม 4 คอลัมน์ (และ 2 สำหรับจอเล็ก) */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            width: 95%;
+            max-width: 600px;
+        }
+
+        .link-item {
+            border: 2px solid #ff007f;
+            border-radius: 10px;
+            padding: 12px 2px;
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: clamp(11px, 2.5vw, 14px);
+            background: rgba(0, 0, 0, 0.8);
+            transition: 0.2s;
+            backdrop-filter: blur(5px);
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .link-item:active {
+            background-color: #ff007f;
+            box-shadow: 0 0 20px #ff007f;
+            color: black;
+            transform: scale(0.9);
+        }
+
+        /* ปรับเหลือ 2 คอลัมน์สำหรับ iPhone จอแนวตั้ง */
+        @media (max-width: 480px) {
+            .grid-container { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .neon-header { width: 90%; }
+        }
+
+        /* สำหรับ iPad หรือจอที่กว้างขึ้น */
+        @media (min-width: 768px) {
+            .grid-container { gap: 15px; }
+            .link-item { padding: 20px 5px; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas"></canvas>
+
+    <div class="container">
+        <div class="neon-header">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" class="poki-deco tl" alt="Pikachu">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png" class="poki-deco tr" alt="Charmander">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" class="poki-deco bl" alt="Bulbasaur">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png" class="poki-deco br" alt="Squirtle">
+            
+            <h1>ARE YOU READY TO <br> HAVE FUN TOGETHER?</h1>
+        </div>
+
+        <div class="grid-container">
+            <a href="https://www.azmen.com" class="link-item">AZ Men</a>
+            <a href="https://www.pornhub.org" class="link-item">Pornhub</a>
+            <a href="https://www.japangaysex.com" class="link-item">Japan Gay Sex</a>
+            <a href="https://www.xvideos.com" class="link-item">XVideos</a>
+            <a href="https://www.gayporno.tube" class="link-item">GayPorno Tube</a>
+            <a href="https://www.gaypornhot.com" class="link-item">GayPornHot</a>
+            <a href="https://www.playvids.com" class="link-item">Playvids</a>
+            <a href="https://www.netfuck.net" class="link-item">Netfuck</a>
+            <a href="https://traingon.top" class="link-item">Traingon.top</a>
+            <a href="https://boyfeelfin.net" class="link-item">Boyfeelfin</a>
+            <a href="https://Www.x.com/nightkingwow" class="link-item">X[NightKingWow]</a>
+            <a href="https://www.sotwe.com/Beardyblack1" class="link-item">Sotwe</a>
+            <a href="https://www.gaypornvidsxxx.com" class="link-item">Gaypornvidsxxx</a>
+            <a href="https://www.eporner.com" class="link-item">Eporner</a>
+            <a href="https://www.xnxx.com" class="link-item">Xnxx</a>
+            <a href="https://www.xhamster.com" class="link-item">xhamster</a>
+            <a href="https://www.reddit.com" class="link-item">Reddit</a>
+
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const text = "Jomtub";
+        const fontSize = 16;
+        let columns = Math.floor(canvas.width / fontSize);
+        let drops = [];
+
+        function initDrops() {
+            columns = Math.floor(canvas.width / fontSize);
+            drops = [];
+            for (let x = 0; x < columns; x++) {
+                drops[x] = Math.random() * -100;
+            }
+        }
+        initDrops();
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#ff007f'; 
+            ctx.font = 'bold ' + fontSize + 'px arial';
+
+            for (let i = 0; i < drops.length; i++) {
+                const char = text.charAt(Math.floor(Math.random() * text.length));
+                ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 50);
+    </script>
+</body>
+</html>
