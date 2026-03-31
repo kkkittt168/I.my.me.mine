@@ -5,46 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>·~My.Funny~·Portal~·</title>
     <style>
-    * { box-sizing: border-box; }
-    body, html {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        min-height: 100%;
-        background-color: #000;
-        font-family: sans-serif;
+    /* คุมขนาดรูปภาพไม่ให้ล้นจอ */
+    img {
+        max-width: 80px; /* **ปรับตรงนี้เพื่อให้รูปเล็กลงตามใจป๊ะป๋าครับ** */
+        height: auto;
     }
 
-    /* ฝนดาวตก Jomtub */
     #canvas {
         position: fixed;
         top: 0;
         left: 0;
         width: 100vw;
         height: 100vh;
-        z-index: 1; /* เอาฝนไว้ชั้น 1 */
+        z-index: -1;
         pointer-events: none;
     }
 
-    /* กล่องปุ่มกด */
     .container {
-        position: relative;
-        z-index: 2; /* ดึงปุ่มมาอยู่ชั้น 2 (ทับหน้าฝน) */
         width: 100%;
         min-height: 100dvh;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        padding: 10px;
-        background: transparent !important; /* บังคับให้โปร่งใสเพื่อเห็นฝน */
+        background: transparent !important;
+        position: relative;
+        z-index: 1;
+        padding: 20px 10px;
     }
 
-    /* เพิ่มความชัดให้ปุ่ม */
-    .neon-header, .link-btn {
-        background-color: rgba(0, 0, 0, 0.8) !important; /* ให้พื้นหลังปุ่มดำเข้ม จะได้ไม่กลืนกับฝน */
-        position: relative;
-        z-index: 3;
+    /* จัดระเบียบปุ่มให้ดูง่าย */
+    .link-btn {
+        width: 90%;
+        max-width: 400px;
+        margin: 5px 0;
+        background: rgba(0, 0, 0, 0.7); /* พื้นหลังปุ่มโปร่งแสงนิดๆ ให้เห็นฝน */
+        border: 2px solid #ff0055;
+        color: #fff;
+        padding: 15px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 10px;
     }
 </style>
 
