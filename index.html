@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Jomtub's Portal</title>
+    <title>·-My.Fun's Portal-·</title>
     <style>
         * { box-sizing: border-box; }
         body, html {
@@ -13,28 +13,31 @@
             height: 100%;
             background-color: #000;
             font-family: sans-serif;
-            overflow: hidden; /* กันสไลด์ไปมาบน iPhone */
+            overflow: auto; /* กันสไลด์ไปมาบน iPhone */
         }
 
         /* Canvas ฝนดาวตก Jomtub */
         #canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
+    position: fixed;   /* เปลี่ยนเป็น fixed เพื่อให้ลอยค้างที่หน้าจอ */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;       /* ให้ไปอยู่หลังปุ่มกด */
+    pointer-events: none; /* เพื่อให้จิ้มทะลุไปกดปุ่มด้านหลังได้ */
+}
+
 
         .container {
-            width: 100%;
-            height: 100dvh; /* ใช้ dynamic vh สำหรับ Safari บน iPhone */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center; /* จัดให้อยู่กลางจอพอดี */
-            padding: 10px;
-        }
+    width: 100%;
+    min-height: 100dvh; /* เติม min- เข้าไปข้างหน้า */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
 
         /* กรอบนีออน สเกลตามความกว้างหน้าจอ */
         .neon-header {
@@ -194,6 +197,6 @@
         }
 
         setInterval(draw, 50);
-    </script>
-</body>
-</html>
+   <script>
+        canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
