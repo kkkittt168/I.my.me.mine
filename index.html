@@ -18,28 +18,28 @@
 
         /* Canvas ฝนดาวตก Jomtub */
         #canvas {
-    position: fixed;   /* เปลี่ยนเป็น fixed เพื่อให้ลอยค้างที่หน้าจอ */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;       /* ให้ไปอยู่หลังปุ่มกด */
-    pointer-events: none; /* เพื่อให้จิ้มทะลุไปกดปุ่มด้านหลังได้ */
+    z-index: 1; /* **แก้จาก -1 เป็น 1 (เพื่อให้มันมาอยู่ข้างหน้าสุด)** */
+    pointer-events: none; /* **สำคัญมาก: เพื่อให้ป๊ะป๋าจิ้มทะลุตัวอักษรไปกดปุ่มได้** */
 }
 
-
-        .container {
+          .container {
     width: 100%;
-    min-height: 100dvh; /* เติม min- เข้าไปข้างหน้า */
+    min-height: 100vh; /* **เติม min- เข้าไปข้างหน้าคำว่า height** */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 10px;
+    position: relative; /* **เพิ่มบรรทัดนี้เข้าไปครับ** */
+    z-index: 2; /* **เพิ่มบรรทัดนี้เพื่อให้ปุ่มกดอยู่เหนือตัวอักษรวิ่ง** */
 }
 
-
-        /* กรอบนีออน สเกลตามความกว้างหน้าจอ */
+      /* กรอบนีออน สเกลตามความกว้างหน้าจอ */
         .neon-header {
             border: 4px solid #ff007f;
             padding: 5% 2%;
